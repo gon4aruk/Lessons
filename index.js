@@ -19,8 +19,8 @@ export const sayStudentName = sayName.bind(student);
  * используйте ф-цию sayName и .bind с нужным объектом
  */
 
-const sayBruceName = sayName.bind({ name: "Bruce" });
-sayBruceName();
+export const sayBruceName = sayName.bind({ name: "Bruce" });
+
 
 /* ===> 2 <=== */
 const company = {
