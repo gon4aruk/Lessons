@@ -1,12 +1,12 @@
-export function calculator(a, b) {
+function calculator(a, b) {
   switch (this.operation) {
-    case '+':
+    case "+":
       return a + b;
-    case '-':
+    case "-":
       return a - b;
-    case '/':
+    case "/":
       return a / b;
-    case '*':
+    case "*":
       return a * b;
     default:
       return NaN;
@@ -19,10 +19,8 @@ export function calculator(a, b) {
  * и должна принимать 2 числа и возвращать из произведение
  */
 
-export const multiplier = (a, b) => {
-  const obj = { operation: "*" }; 
-  return calculator.bind(obj, a, b);
-};
+export const multiplier = calculator.bind({ operation: "*" });
+
 
 /*
  * Ф-ция summator должна быть создана на основе calculator
@@ -30,10 +28,7 @@ export const multiplier = (a, b) => {
  * и должна принимать 2 числа и возвращать из сумму
  */
 
-export const summator = (a, b) => {
-  const obj = { operation: "+" }; 
-  return calculator.bind(obj, a, b);
-};
+export const summator = calculator.bind({ operation: "+" });
 
 /*
  * Ф-ция twice должна быть создана на основе calculator
@@ -41,7 +36,4 @@ export const summator = (a, b) => {
  * и должна принимать 1 число и возвращать это число умноженное на 2
  */
 
-export const twice = (a) => {
-  const obj = { operation: "*" }; 
-  return calculator.bind(obj, a, 2);
-};
+export const twice = calculator.bind({ operation: "*" }, 2);
