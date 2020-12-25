@@ -1,4 +1,4 @@
-function calculator(a, b) {
+export function calculator(a, b) {
   switch (this.operation) {
     case "+":
       return a + b;
