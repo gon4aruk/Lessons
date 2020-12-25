@@ -21,7 +21,7 @@ export function calculator(a, b) {
 
 export const multiplier = (a, b) => {
   const obj = { operation: "*" }; 
-  return calculator.bind(obj, a, b)();
+  return calculator.bind(obj, a, b);
 };
 
 /*
@@ -32,7 +32,7 @@ export const multiplier = (a, b) => {
 
 export const summator = (a, b) => {
   const obj = { operation: "+" }; 
-  return calculator.bind(obj, a, b)();
+  return calculator.bind(obj, a, b);
 };
 
 /*
@@ -43,5 +43,5 @@ export const summator = (a, b) => {
 
 export const twice = (a) => {
   const obj = { operation: "*" }; 
-  return calculator.bind(obj, a, 2)();
+  return calculator.bind(obj, a, 2);
 };
