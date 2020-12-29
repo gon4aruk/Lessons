@@ -1,5 +1,4 @@
-export const setButton = buttonText => {
-  const body = document.querySelector('body');
-  body.innerHTML = `<button>${buttonText}</button>`;
+export const clearList = () => {
+  const list = document.querySelector('.categories');
+  list.innerHTML = '';
 }
-
