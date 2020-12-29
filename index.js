@@ -1,39 +1,22 @@
-export function calculator(a, b) {
-  switch (this.operation) {
-    case "+":
-      return a + b;
-    case "-":
-      return a - b;
-    case "/":
-      return a / b;
-    case "*":
-      return a * b;
-    default:
-      return NaN;
-  }
-}
+const tasks = [
+  { text: "Buy milk", done: false },
+  { text: "Pick up Tom from airport", done: false },
+  { text: "Visit party", done: false },
+  { text: "Visit doctor", done: true },
+  { text: "Buy meat", done: true },
+];
 
-/*
- * Ф-ция multiplier должна быть создана на основе calculator
- * с использования .bind
- * и должна принимать 2 числа и возвращать из произведение
- */
+const renderListItem = (itemList) => {
+  const itemListElem = document.querySelector(".list");
 
-export const multiplier = calculator.bind({ operation: "*" });
+  const itemsListElements = itemList.map(({ text }) => {
+    const listItem = document.createElement("li");
+    listItem.classList.add(".list__item");
+    listItem.append(text);
+    return listItem;
+  });
 
+  return itemListElem.append(...itemsListElements);
+};
 
-/*
- * Ф-ция summator должна быть создана на основе calculator
- * с использования .bind
- * и должна принимать 2 числа и возвращать из сумму
- */
-
-export const summator = calculator.bind({ operation: "+" });
-
-/*
- * Ф-ция twice должна быть создана на основе calculator
- * с использования .bind
- * и должна принимать 1 число и возвращать это число умноженное на 2
- */
-
-export const twice = calculator.bind({ operation: "*" }, 2);
+renderListItem(tasks);
