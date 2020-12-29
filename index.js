@@ -1,4 +1,7 @@
-export const clearList = () => {
-  const list = document.querySelector('.categories');
-  list.innerHTML = '';
-}
+export const createButton = (text) => {
+  const body = document.querySelector('body');
+  const button = document.createElement('button');
+  button.textContent = text;
+  body.append(button);
+};
+
