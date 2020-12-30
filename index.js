@@ -1,4 +1,4 @@
-export const manageСlasses = () => {
+export const manageClasses = () => {
   if (document.querySelector(".one")) {
     const one = document.querySelector(".one");
     one.setAttribute("class", "one selected");
@@ -19,4 +19,3 @@ export const manageСlasses = () => {
     four.setAttribute("class", "four some-class another-class");
   }
 };
-
