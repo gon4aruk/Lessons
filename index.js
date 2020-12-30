@@ -1,21 +1,10 @@
-export const finishList = () => {
-  const itemsList = document.querySelector(".list");
-  const itemsListArray = Array.from(document.querySelectorAll("li"));
-  const itemsText = itemsListArray.map((elem) => elem.textContent);
-  if (itemsListArray.length < 8) {
-    for (let i = 1; i <= 8; i += 1) {
-      if (!itemsText.includes(String(i))) {
-        const listItem = document.createElement("li");
-        listItem.textContent = i;
-        itemsList.append(listItem);
-      }
-    }
-  }
-
-  const itemsListArrayNew = Array.from(document.querySelectorAll("li"));
-  const itemsListArraySorted = itemsListArrayNew.sort(
-    (elem1, elem2) => elem1.textContent - elem2.textContent
-  );
-  itemsList.innerHTML = "";
-  itemsList.append(...itemsListArraySorted);
-};
+export const finishForm = () => {
+  const textInput = document.querySelector('input');
+  textInput.setAttribute('type', 'password');
+  
+  const form = document.querySelector('form');
+  const newInput = document.createElement('input');
+  newInput.setAttribute('type', 'text');
+  newInput.setAttribute('name', 'login');
+  form.prepend(newInput);
+}
