@@ -1,10 +1,22 @@
-export const finishForm = () => {
-  const textInput = document.querySelector('input');
-  textInput.setAttribute('type', 'password');
-  
-  const form = document.querySelector('form');
-  const newInput = document.createElement('input');
-  newInput.setAttribute('type', 'text');
-  newInput.setAttribute('name', 'login');
-  form.prepend(newInput);
-}
+export const manageСlasses = () => {
+  if (document.querySelector(".one")) {
+    const one = document.querySelector(".one");
+    one.setAttribute("class", "one selected");
+  }
+
+  if (document.querySelector(".two")) {
+    const two = document.querySelector(".two");
+    two.setAttribute("class", "two");
+  }
+
+  if (document.querySelector(".three")) {
+    const three = document.querySelector(".three");
+    three.setAttribute("class", "three");
+  }
+
+  if (document.querySelector(".some-class")) {
+    const four = document.querySelector(".some-class");
+    four.setAttribute("class", "four some-class another-class");
+  }
+};
+
