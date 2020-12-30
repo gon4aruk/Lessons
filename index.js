@@ -1,4 +1,4 @@
-const finishList = () => {
+export const finishList = () => {
   const itemsList = document.querySelector(".list");
   const itemsListArray = Array.from(document.querySelectorAll("li"));
   const itemsText = itemsListArray.map((elem) => elem.textContent);
