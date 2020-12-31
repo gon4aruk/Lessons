@@ -1,9 +1,6 @@
-export const squaredNumbers = () => {
-  const numbers = document.querySelectorAll(".number");
-  for (let i = 0; i < numbers.length; i += 1) {
-    const numberDataValue = numbers[i].dataset.number;
-    numbers[i].dataset.squaredNumber = numberDataValue * numberDataValue;
-  }
+export const getSection = (num) => {
+  const span = document.querySelector(`span[data-number="${num}"]`);
+  return span.closest(`.box`).dataset.section;
 };
 
-squaredNumbers();
+console.log(getSection(5));
