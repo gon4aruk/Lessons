@@ -1,8 +1,9 @@
-const buttonElem = document.querySelector(".single-use-btn");
+const buttonElems = document.querySelectorAll(".btn");
 
-const getStatus = () => {
-  console.log('clicked');
-  buttonElem.removeEventListener("click", getStatus);
+const handleClick = () => {
+  console.log(event.target.textContent);
 };
 
-buttonElem.addEventListener("click", getStatus);
+for (let i = 0; i < buttonElems.length; i += 1) {
+  buttonElems[i].addEventListener("click", handleClick);
+}
