@@ -1,9 +1,7 @@
-const buttonElems = document.querySelectorAll(".btn");
+const inputElem = document.querySelector(".text-input");
 
-const handleClick = (event) => {
-    console.log(event.target.textContent);
+const getInputText = (event) => {
+  console.log(event.target.value);
 };
 
-for (let i = 0; i < buttonElems.length; i += 1) {
-  buttonElems[i].addEventListener("click", handleClick);
-}
+inputElem.addEventListener("change", getInputText);
