@@ -1,8 +1,8 @@
-const inputElem = document.querySelector(".search__input");
-const buttonElem = document.querySelector(".search__btn");
+const buttonElem = document.querySelector(".single-use-btn");
 
-const search = () => {
-  console.log(inputElem.value);
+const getStatus = () => {
+  console.log('clicked');
+  buttonElem.removeEventListener("click", getStatus);
 };
 
-buttonElem.addEventListener("click", search);
+buttonElem.addEventListener("click", getStatus);
