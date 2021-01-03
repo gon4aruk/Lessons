@@ -1,7 +1,7 @@
 const buttonElems = document.querySelectorAll(".btn");
 
-const handleClick = () => {
-  console.log(event.target.textContent);
+const handleClick = (event) => {
+    console.log(event.target.textContent);
 };
 
 for (let i = 0; i < buttonElems.length; i += 1) {
