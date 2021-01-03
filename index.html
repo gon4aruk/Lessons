@@ -3,20 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Closest element</title>
+    <title>Events propagation</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+      integrity="sha256-WAgYcAck1C1/zEl5sBl5cfyhxtLgKGdpI3oKyJffVRI="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
-    <div data-section="one" class="box">
-      <span data-number="1"></span>
-      <span data-number="2"></span>
-      <span data-number="3"></span>
+    <div class="rect rect_div">
+      div
+      <p class="rect rect_p">
+        p
+        <span class="rect rect_span">span</span>
+      </p>
     </div>
-    <div data-section="two" class="box">
-      <span data-number="4"></span>
-      <span data-number="5"></span>
-      <span data-number="6"></span>
-    </div>
-    <script src="index.js" type="module"></script>
+    <div class="rect events-list"></div>
+    <button class="btn clear-btn">Clear</button>
+    <button class="btn remove-handlers-btn">Remove handleds</button>
+    <button class="btn attach-handlers-btn">Attach handleds</button>
+    <script src="index.js"></script>
   </body>
 </html>
