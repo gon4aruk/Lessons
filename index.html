@@ -4,14 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event handler</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+      integrity="sha256-WAgYcAck1C1/zEl5sBl5cfyhxtLgKGdpI3oKyJffVRI="
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
-    <div class="pagination">
-      <button class="pagination__page" data-page-number="1">1</button>
-      <button class="pagination__page" data-page-number="2">2</button>
-      <button class="pagination__page" data-page-number="3">3</button>
-    </div>
+    <main class="page">
+      <form class="login-form">
+        <h1 class="form-title">Login</h1>
+        <div class="form-control">
+          <label class="form-label" for="email">Email</label>
+          <input
+            class="form-input"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="mail@example.com"
+            required
+          />
+          <span class="error-text error-text_email"></span>
+        </div>
+        <div class="form-control">
+          <label class="form-label" for="password">Password</label>
+          <input
+            class="form-input"
+            type="password"
+            id="password"
+            name="password"
+            required
+          />
+          <span class="error-text error-text_password"></span>
+        </div>
+        <button class="submit-button" type="submit">Submit</button>
+      </form>
+    </main>
 
     <script src="index.js"></script>
   </body>
