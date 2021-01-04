@@ -1,46 +1,59 @@
-const emailInputElem = document.querySelector("#email");
-const passwordInputElem = document.querySelector("#password");
+const arenaElem = document.querySelector(".arena");
 
-const errorTextEmail = document.querySelector(".error-text_email");
-const passwordErrorText = document.querySelector(".error-text_password");
+const getNumbersArray = (from, to) => {
+  const result = [];
 
-const isRequared = (value) => (value ? undefined : "Required");
+  for (let i = from; i <= to; i += 1) {
+    result.push(i);
+  }
 
-const isEmail = (value) =>
-  value.includes("@") ? undefined : "Should be an email";
-
-const validatorsByName = {
-  email: [isRequared, isEmail],
-  password: [isRequared],
+  return result;
 };
 
-const validate = (fieldName, value) => {
-  const validators = validatorsByName[fieldName];
-  return validators
-    .map((validator) => validator(value))
-    .filter((errorText) => errorText)
-    .join(", ");
+const getLineSeats = () => {
+  return getNumbersArray(1, 10)
+    .map(
+      (numberOfSeat) =>
+        `<div class="sector__seat" data-seat-number="${numberOfSeat}"></div>`
+    )
+    .join("");
 };
 
-const onEmailChange = (event) => {
-  const errorText = validate("email", event.target.value);
-  errorTextEmail.textContent = errorText;
+const getSectorLines = () => {
+  return getNumbersArray(1, 10)
+    .map(
+      (numberOfLine) =>
+        `<div class="sector__line" data-line-number="${numberOfLine}">${getLineSeats()}</div>`
+    )
+    .join("");
 };
 
-const inPasswordChange = (event) => {
-  const errorText = validate("password", event.target.value);
-  passwordErrorText.textContent = errorText;
+const renderSectors = () => {
+  const sectorsString = getNumbersArray(1, 3)
+    .map(
+      (numberOfSector) =>
+        `<div class="sector" data-sector-number="${numberOfSector}">${getSectorLines()}</div>`
+    )
+    .join("");
+  arenaElem.innerHTML = sectorsString;
 };
 
-emailInputElem.addEventListener("input", onEmailChange);
-passwordInputElem.addEventListener("input", inPasswordChange);
+renderSectors();
 
-const formElem = document.querySelector(".login-form");
+const boardElem = document.querySelector(".board__selected-seat");
 
-const onFormSubmit = (event) => {
-  event.preventDefault();
-  const formData = Object.fromEntries(new FormData(formElem));
-  alert(JSON.stringify(formData));
+const onSeatSelect = (event) => {
+  const isSeat = event.target.classList.contains("sector__seat");
+
+  if (!isSeat) {
+    return;
+  }
+
+  const selectedSeat = event.target.dataset.seatNumber;
+  const selectedLine = event.target.closest(".sector__line").dataset.lineNumber;
+  const selectedSector = event.target.closest(".sector").dataset.sectorNumber;
+
+  boardElem.textContent = `S ${selectedSector} - L ${selectedLine} - S ${selectedSeat}`;
 };
 
-formElem.addEventListener("submit", onFormSubmit);
+arenaElem.addEventListener("click", onSeatSelect);

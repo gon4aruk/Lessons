@@ -14,36 +14,12 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
 
-  <body>
-    <main class="page">
-      <form class="login-form">
-        <h1 class="form-title">Login</h1>
-        <div class="form-control">
-          <label class="form-label" for="email">Email</label>
-          <input
-            class="form-input"
-            type="email"
-            id="email"
-            name="email"
-            placeholder="mail@example.com"
-            required
-          />
-          <span class="error-text error-text_email"></span>
-        </div>
-        <div class="form-control">
-          <label class="form-label" for="password">Password</label>
-          <input
-            class="form-input"
-            type="password"
-            id="password"
-            name="password"
-            required
-          />
-          <span class="error-text error-text_password"></span>
-        </div>
-        <button class="submit-button" type="submit">Submit</button>
-      </form>
-    </main>
+  <body class="page">
+    <div class="arena"></div>
+    <div class="board">
+      <span>Selected seat</span>
+      <span class="board__selected-seat">-</span>
+    </div>
 
     <script src="index.js"></script>
   </body>
