@@ -4,7 +4,7 @@ const passwordInputElem = document.querySelector("#password");
 const errorTextEmail = document.querySelector(".error-text_email");
 const passwordErrorText = document.querySelector(".error-text_password");
 
-const isRequared = (value) => (value ? undefined : "Requaried");
+const isRequared = (value) => (value ? undefined : "Required");
 
 const isEmail = (value) =>
   value.includes("@") ? undefined : "Should be an email";
