@@ -14,7 +14,3 @@ const getDiff = (startDate, endDate) => {
 
   return `${days}d ${hours}h ${minutes}m ${seconds}s`;
 };
-
-console.log(
-  getDiff(new Date(2019, 0, 1, 20, 30), new Date(2020, 0, 1, 20, 30))
-);
