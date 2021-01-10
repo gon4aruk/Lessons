@@ -35,21 +35,27 @@ const tasks = [
 
 // render tasks
 
+const createCheckbox = (done, id) => {
+  const checkboxElem = document.createElement("input");
+  checkboxElem.setAttribute("type", "checkbox");
+  checkboxElem.classList.add("list__item-checkbox");
+  checkboxElem.checked = done;
+  checkboxElem.dataset.id = id;
+  return checkboxElem;
+};
+
 const renderTasks = (tasksList) => {
   const tasksElems = tasksList
     .sort((el1, el2) => el2.timeOfChange - el1.timeOfChange)
-    .sort((a, b) => a.done - b.done)
+    .sort((el1, el2) => el1.done - el2.done)
     .map(({ text, done, id }) => {
       const listItemElem = document.createElement("li");
       listItemElem.classList.add("list__item");
-      const checkbox = document.createElement("input");
-      checkbox.setAttribute("type", "checkbox");
-      checkbox.checked = done;
-      checkbox.dataset.id = id;
-      checkbox.classList.add("list__item-checkbox");
       if (done) {
         listItemElem.classList.add("list__item_done");
       }
+
+      const checkbox = createCheckbox(done, id);
       listItemElem.append(checkbox, text);
 
       return listItemElem;
@@ -69,9 +75,6 @@ const onCheckboxClick = (event) => {
     return;
   }
 
-  const selectedListItem = event.target.closest(".list__item");
-  selectedListItem.classList.toggle("list__item_done");
-
   const checkboxId = event.target.dataset.id;
   const taskElemInArray = tasks.find(({ id }) => id === Number(checkboxId));
   taskElemInArray.timeOfChange = new Date();
@@ -82,7 +85,9 @@ const onCheckboxClick = (event) => {
     taskElemInArray.done = true;
   }
 
-  listElem.textContent = "";
+  event.target.closest(".list__item").classList.toggle("list__item_done");
+
+  listElem.innerHTML = "";
   renderTasks(tasks);
 };
 
@@ -108,7 +113,7 @@ const onButtonClick = () => {
 
   inputElem.value = "";
 
-  listElem.textContent = "";
+  listElem.innerHTML = "";
   renderTasks(tasks);
 };
 
