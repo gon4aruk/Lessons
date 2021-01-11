@@ -46,8 +46,9 @@ const createCheckbox = (done, id) => {
 
 const renderTasks = (tasksList) => {
   const tasksElems = tasksList
-    .sort((el1, el2) => el2.timeOfChange - el1.timeOfChange)
-    .sort((el1, el2) => el1.done - el2.done)
+    .sort(
+      (el1, el2) => el1.done - el2.done || el2.timeOfChange - el1.timeOfChange
+    )
     .map(({ text, done, id }) => {
       const listItemElem = document.createElement("li");
       listItemElem.classList.add("list__item");
