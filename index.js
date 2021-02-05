@@ -1,35 +1,24 @@
-export const addImage = (imgSrc, callback) => {
-  const imageElem = document.createElement("img");
-  imageElem.setAttribute("alt", "My image");
-  imageElem.src = imgSrc;
-  const containerElem = document.querySelector(".page");
-  containerElem.append(imageElem);
+export const addImageV2 = url => {
+  const promise = new Promise((resolve, reject) => {
+    const img = document.createElement('img');
+    img.setAttribute('alt', 'User avatar');
+    img.src = url;
 
-  const onImageLoaded = () => {
-    callback(null, imageElem);
-  };
+    const pageElem = document.querySelector('.page');
+    pageElem.append(img);
 
-  imageElem.addEventListener("load", onImageLoaded);
+    const onImageLoaded = () => {
+      const { width, height } = img;
+      resolve({ width, height });
+    };
 
-  imageElem.addEventListener("error", () =>
-    callback("Image load is failed...")
-  );
+    const onImageLoadError = () => reject(new Error('Image load failed'));
+
+    img.addEventListener('load', onImageLoaded);
+
+    img.addEventListener('error', onImageLoadError);
+  });
+
+  return promise;
 };
 
-// callack example
-
-// const onImageLoaded = (error, imgElem) => {
-//   if (error) {
-//     console.log(error);
-//     return;
-//   }
-//   const { width, height } = imgElem;
-//   const sizeElem = document.querySelector(".image-size");
-//   sizeElem.textContent = `${width} x ${height}`;
-// };
-
-// test call
-// addImage(
-//   "https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg",
-//   onImageLoaded
-// );
