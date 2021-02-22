@@ -30,14 +30,12 @@ const onSubmitForm = (event) => {
     password,
   };
 
-  const stringUserData = JSON.stringify(userData);
-
   return fetch(baseUrl, {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
     },
-    body: stringUserData,
+    body: JSON.stringify(userData),
   })
     .then((response) => response.json())
     .then((result) => {
