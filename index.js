@@ -30,17 +30,22 @@ const onSubmitForm = (event) => {
     password,
   };
 
+  const stringUserData = JSON.stringify(userData);
+
   const response = fetch(baseUrl, {
     method: "POST",
+    body: stringUserData,
     headers: {
       "Content-Type": "application/json;charset=utf-8",
     },
-    body: JSON.stringify(userData),
   });
 
   response
     .then((result) => result.json())
-    .then((data) => alert(JSON.stringify(data)))
+    .then((data) => {
+      alert(JSON.stringify(data));
+      errorTextElem.textContent = "";
+    })
     .catch(() => {
       errorTextElem.textContent = "Failed to create user";
     });
