@@ -15,13 +15,7 @@ const checkValidation = () => {
 const onSubmitForm = (event) => {
   event.preventDefault();
 
-  const formData = new FormData(formElem);
-
-  const userData = {};
-
-  for (let [name, value] of formData) {
-    userData[name] = value;
-  }
+  const userData = Object.fromEntries(new FormData(formElem));
 
   fetch(baseUrl, {
     method: "POST",
