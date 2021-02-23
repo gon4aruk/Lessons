@@ -15,23 +15,9 @@ const checkValidation = () => {
 const onSubmitForm = (event) => {
   event.preventDefault();
 
-  const formData = new FormData(formElem);
-  const email = formData.get("email");
-  const userName = formData.get("name");
-  const password = formData.get("password");
-
-  const userData = {
-    email,
-    userName,
-    password,
-  };
-
   fetch(baseUrl, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json;charset=utf-8",
-    },
-    body: JSON.stringify(userData),
+    body: new FormData(formElem),
   })
     .then((response) => response.json())
     .then((data) => {
