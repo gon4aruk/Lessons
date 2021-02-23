@@ -15,9 +15,20 @@ const checkValidation = () => {
 const onSubmitForm = (event) => {
   event.preventDefault();
 
+  const formData = new FormData(formElem);
+
+  const userData = {};
+
+  for (let [name, value] of formData) {
+    userData[name] = value;
+  }
+
   fetch(baseUrl, {
     method: "POST",
-    body: new FormData(formElem),
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: JSON.stringify(userData),
   })
     .then((response) => response.json())
     .then((data) => {
