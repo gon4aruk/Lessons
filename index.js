@@ -16,11 +16,10 @@ const userNameInputElem = document.querySelector(".name-form__input");
 
 const onClickButton = () => {
   const userName = userNameInputElem.value;
-
+  showSpinner();
   fetchUserData(userName)
     .then((userData) => {
       renderUserData(userData);
-      showSpinner();
       return userData.repos_url;
     })
     .then((repos_url) => fetchUserRepos(repos_url))
