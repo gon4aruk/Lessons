@@ -13,23 +13,37 @@ renderUserData(defaultUser);
 
 const showUserButtonElem = document.querySelector(".name-form__btn");
 const userNameInputElem = document.querySelector(".name-form__input");
+const reposListElem = document.querySelector(".repo-list");
 
-const onClickButton = () => {
-  const userName = userNameInputElem.value;
+const onClickButton = async () => {
+  reposListElem.innerHTML = '';
   showSpinner();
-  fetchUserData(userName)
-    .then((userData) => {
-      renderUserData(userData);
-      return userData.repos_url;
-    })
-    .then((repos_url) => fetchUserRepos(repos_url))
-    .then((reposList) => renderRepoList(reposList))
-    .catch((error) => {
-      alert(error.message);
-    })
-    .finally(() => {
-      hideSpinner();
-    });
+  const userName = userNameInputElem.value;
+
+  try {
+    const userData = await fetchUserData(userName);
+    renderUserData(userData);
+    const userReposList = await fetchUserRepos(userData.repos_url);
+    renderRepoList(userReposList);
+  } catch (error) {
+    alert(error.message);
+  } finally {
+    hideSpinner();
+  }
+
+  // fetchUserData(userName)
+  //   .then((userData) => {
+  //     renderUserData(userData);
+  //     return userData.repos_url;
+  //   })
+  //   .then((repos_url) => fetchUserRepos(repos_url))
+  //   .then((reposList) => renderRepoList(reposList))
+  //   .catch((error) => {
+  //     alert(error.message);
+  //   })
+  //   .finally(() => {
+  //     hideSpinner();
+  //   });
 };
 
 showUserButtonElem.addEventListener("click", onClickButton);
